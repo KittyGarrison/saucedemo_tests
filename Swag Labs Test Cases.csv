@@ -1,0 +1,101 @@
+Test ID,Title,Section,steps,Expected result,Test Data,Notes
+001,Happy path buy item from PDP,Flows,"Navigate to Base URL
+Login
+Select first image on product list
+select ""add to cart"" button
+Select Cart Icon
+Select ""Checkout"" Button
+Enter user Info
+Select ""Continue"" button
+Select ""Finish"" button ","Success page is displayed with message ""Thank you for your order!""","Base URL: https://www.saucedemo.com/
+Username: standard_user
+Pass: secret_sauce
+First Name: Shade
+Last Name: Arbor
+Zip: 48226",High Priority
+002,Users Have independent carts,Flows,"Navigate to Base URL
+Login with first User
+Select Cart Icon
+remove any items in cart
+logout
+Login with second User
+Add first 2 items from product list to cart
+logout
+Login with first User
+Select Cart Icon",The first user's cart is still empty,"Base URL: https://www.saucedemo.com/
+Username: standard_user
+Pass: secret_sauce
+Username: visual_user
+Pass: secret_sauce",This test should fail for demo site
+003,only accepts valid login,Authentication,"Navigate to Base URL
+Attempt to log in with the following scenarios:
+1. Username: [empty], Pass: [empty]
+2. Username: [empty], Pass: [valid pass (see Test Data)]
+3. Username: [valid username], Pass: [empty]
+4. Username: [valid username], Pass: ""1234"" (invalid pass)
+5. Username: ""Kitty"", Pass:  [valid pass]  (invalid username)
+6. Username: ""Kitty"", Pass:  ""1234""  (both invalid)",all scenarios DO NOT successfully login,"Base URL: https://www.saucedemo.com/
+Valid Username: standard_user
+Valid Pass: secret_sauce",
+004,logged out user CAN NOT access cart,Authentication,"Navigate to Base URL
+Login 
+Add first 2 items from product list to cart
+log out
+navigate to [Base URL]/cart.html","User is redirected login page and displayed an error, cart page SHOULD NOT be visible","Base URL: https://www.saucedemo.com/
+Username: standard_user
+Pass: secret_sauce",
+005,item titles match linked PDP,Product List,"Navigate to Base URL
+login
+start with first item on item list do the following for each item listed:
+1. record/note item title (.inventory_item_name)
+2. select item image (.inventory_item_img)
+3. compare PDP item title (.inventory_details_name)
+4. Select ""Back to products"" link",.inventory_item_name should match .inventory_details_name,"Base URL: https://www.saucedemo.com/
+Username: standard_user
+Pass: secret_sauce",This test would be better suited for API testing paired with front end tests that ensure the UI matches the data returned.
+006,Filters change pagination,Product List,"Navigate to Base URL
+login
+open the filters drop-down
+select ""Price High to Low""
+target the first item and record/note item price
+open the filters drop-down
+select ""Price Low to High""
+target the first item and record/note item price
+",First value should be greater than second value,"Base URL: https://www.saucedemo.com/
+Username: standard_user
+Pass: secret_sauce",This test assumes that all of the products on the page are not identically priced
+007,"Add and Remove items, Cart badge matches item count",Cart,"Navigate to Base URL
+Login 
+Add first 2 items from product list to cart
+(a) Select Cart Icon
+(b) Select the ""Remove"" button on the first item","(a) when landing on the cart page, the cart icon should display a badge that has a ""2""
+(b) the second item should now be the first and only item and the cart icon badge should read ""1""","Base URL: https://www.saucedemo.com/
+Username: standard_user
+Pass: secret_sauce","This was originally two separate tests, when running them manually it is simpler to run them together. When automated it should have separate assertions so that it is clear where the failure was."
+008,External Links Have Appropriate URL,Cart,"Navigate to Base URL
+Login
+Open the hamburger menu on the left
+(a) inspect the About link
+select the X to close the menu
+at the bottom of the page:
+(b) inspect the Twitter link
+(c) inspect the Facebook link
+(d) inspect the LinkedIn link","The links should match the following URLs:
+(a) https://saucelabs.com/
+(b) https://twitter.com/saucelabs
+(c) https://www.facebook.com/saucelabs
+(d) https://www.linkedin.com/company/sauce-labs/","Base URL: https://www.saucedemo.com/
+Username: standard_user
+Pass: secret_sauce",
+009,Product Detail Page (PDP),Visual Check,"Navigate to Base URL
+Login 
+Take a Screenshot for comparing with an image diffing tool",Screenshot should match prior releases or update source to match expected changes,"Base URL: https://www.saucedemo.com/
+Username: standard_user
+Pass: secret_sauce",
+010,Cart,Visual Check,"Navigate to Base URL
+Login 
+Add first 2 items from product list to cart
+navigate to [Base URL]/cart.html
+Take a Screenshot for comparing with an image diffing tool",Screenshot should match prior releases or update source to match expected changes,"Base URL: https://www.saucedemo.com/
+Username: standard_user
+Pass: secret_sauce",By navigating directly to the cart URL this test will not be affected if there is a issue with the cart icon button
