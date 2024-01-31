@@ -16,7 +16,7 @@ describe('Happy Path', () => {
     cy.get('[data-test^=add-to-cart]').click();
     cy.get('.shopping_cart_link').click();
     cy.location('pathname').should('equal', '/cart.html');
-    cy.get('.cart_list').should('have.length', 1);
+    cy.get('.cart_item').should('have.length', 1);
 
     // Checkout button navigates to checkout step one
     cy.getByDataTest('checkout').click();
