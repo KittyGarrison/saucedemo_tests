@@ -48,3 +48,19 @@ Cypress.Commands.add(
     cy.getByDataTest('login-button').click();
   }
 );
+
+/**
+ * Custom command to enter user info with default or provided data.
+ * @param {string} [firstName='Shade'] - The firstName for login. Defaults to 'Shade'.
+ * @param {string} [lastName='Arbor'] - The lastName for login. Defaults to 'Arbor'.
+ * @param {string} [postalCode='48226'] - The postalCode for login. Defaults to '48226'.
+ */
+
+Cypress.Commands.add(
+  'enterUserInfo',
+  (firstName = 'Shade', lastName = 'Arbor', postalCode = '48226') => {
+    cy.getByDataTest('firstName').type(firstName);
+    cy.getByDataTest('lastName').type(lastName);
+    cy.getByDataTest('postalCode').type(postalCode);
+  }
+);
