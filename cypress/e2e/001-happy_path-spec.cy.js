@@ -3,7 +3,7 @@ describe('Happy Path', () => {
   it('enables the user to successfully purchase an item from PDP', () => {
     cy.visit('/');
 
-    // Successful login navigates to the on Products page
+    // Successful login navigates to the Products page
     cy.loginWithCredentials();
     cy.location('pathname').should('equal', '/inventory.html');
     cy.get('.title').should('contain', 'Products');
