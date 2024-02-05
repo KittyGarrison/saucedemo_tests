@@ -2,6 +2,18 @@
 
 This project is a demo of a few automated tests written in [Cypress](https://www.cypress.io/) with a [Percy](https://percy.io/) integration. The target of these tests is the website [Swag Labs](https://www.saucedemo.com/), a dummy site published by [SauceLabs](https://saucelabs.com/) for the purpose of trying out automated testing tools.
 
+## Project Scripts
+
+Available npm run scripts for this project:
+
+| Command    | Description                                                             |
+| ---------- | ----------------------------------------------------------------------- |
+| `cypress`  | Shows Cypress help options.                                             |
+| `cy:open`  | Opens Cypress in interactive mode.                                      |
+| `cy:run`   | Runs Cypress tests from the command line.                               |
+| `cy:view`  | Runs Cypress tests in headed mode without exiting after tests complete. |
+| `cy:percy` | Runs Cypress tests and sends snapshots to Percy.                        |
+
 ## Getting Started
 
 Here are some instructions to guide you through setting up the project on your local machine.
@@ -43,18 +55,6 @@ Refer to the **Project Scripts** section of this README for commands to run test
 
 - **Cypress**: Test results are displayed in the terminal or the Cypress Test Runner UI.
 - **Percy**: Visual test results can be viewed on your Percy dashboard.
-
-## Project Scripts
-
-Available npm run scripts for this project:
-
-| Command    | Description                                                             |
-| ---------- | ----------------------------------------------------------------------- |
-| `cypress`  | Shows Cypress help options.                                             |
-| `cy:open`  | Opens Cypress in interactive mode.                                      |
-| `cy:run`   | Runs Cypress tests from the command line.                               |
-| `cy:view`  | Runs Cypress tests in headed mode without exiting after tests complete. |
-| `cy:percy` | Runs Cypress tests and sends snapshots to Percy.                        |
 
 ## Development Notes
 
