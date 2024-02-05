@@ -19,5 +19,9 @@
   "devDependencies": {
     "@percy/cli": "^1.27.7",
     "@percy/cypress": "^3.1.2"
+  },
+  "prettier": {
+    "printWidth": 50,
+    "singleQuote": true
   }
 }

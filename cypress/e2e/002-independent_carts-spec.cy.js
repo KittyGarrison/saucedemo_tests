@@ -4,24 +4,34 @@ describe('User Carts', () => {
 
     // Login with first user and reset cart
     cy.loginWithCredentials();
-    cy.get('a#reset_sidebar_link').click({ force: true });
+    cy.get('a#reset_sidebar_link').click({
+      force: true,
+    });
 
     // Validate cart is empty
     cy.get('.shopping_cart_link').click();
     cy.get('.cart_item').should('have.length', 0);
 
     // Logout
-    cy.get('a#logout_sidebar_link').click({ force: true });
+    cy.get('a#logout_sidebar_link').click({
+      force: true,
+    });
 
     // Login with second user add 2 items to cart
     cy.loginWithCredentials('visual_user');
-    cy.get('[data-test^=add-to-cart]').first().click();
-    cy.get('[data-test^=add-to-cart]').first().click();
+    cy.get('[data-test^=add-to-cart]')
+      .first()
+      .click();
+    cy.get('[data-test^=add-to-cart]')
+      .first()
+      .click();
     cy.get('.shopping_cart_link').click();
     cy.get('.cart_item').should('have.length', 2);
 
     // Logout
-    cy.get('a#logout_sidebar_link').click({ force: true });
+    cy.get('a#logout_sidebar_link').click({
+      force: true,
+    });
 
     // Login with first user and validate cart is empty
     cy.loginWithCredentials();
