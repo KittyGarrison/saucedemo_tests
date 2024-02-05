@@ -19,12 +19,8 @@ describe('User Carts', () => {
 
     // Login with second user add 2 items to cart
     cy.loginWithCredentials('visual_user');
-    cy.get('[data-test^=add-to-cart]')
-      .first()
-      .click();
-    cy.get('[data-test^=add-to-cart]')
-      .first()
-      .click();
+    cy.addFirstItemsToCart(2);
+
     cy.get('.shopping_cart_link').click();
     cy.get('.cart_item').should('have.length', 2);
 

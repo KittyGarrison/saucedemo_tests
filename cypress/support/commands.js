@@ -30,9 +30,12 @@
  * @returns {Cypress.Chainable<JQuery<HTMLElement>>}
  */
 
-Cypress.Commands.add('getByDataTest', (testId) => {
-  return cy.get(`[data-test=${testId}]`);
-});
+Cypress.Commands.add(
+  'getByDataTest',
+  (testId) => {
+    return cy.get(`[data-test=${testId}]`);
+  }
+);
 
 /**
  * Custom command to log in with provided credentials.
@@ -42,7 +45,10 @@ Cypress.Commands.add('getByDataTest', (testId) => {
 
 Cypress.Commands.add(
   'loginWithCredentials',
-  (username = 'standard_user', password = 'secret_sauce') => {
+  (
+    username = 'standard_user',
+    password = 'secret_sauce'
+  ) => {
     cy.getByDataTest('username').type(username);
     cy.getByDataTest('password').type(password);
     cy.getByDataTest('login-button').click();
@@ -58,9 +64,35 @@ Cypress.Commands.add(
 
 Cypress.Commands.add(
   'enterUserInfo',
-  (firstName = 'Shade', lastName = 'Arbor', postalCode = '48226') => {
+  (
+    firstName = 'Shade',
+    lastName = 'Arbor',
+    postalCode = '48226'
+  ) => {
     cy.getByDataTest('firstName').type(firstName);
     cy.getByDataTest('lastName').type(lastName);
-    cy.getByDataTest('postalCode').type(postalCode);
+    cy.getByDataTest('postalCode').type(
+      postalCode
+    );
+  }
+);
+
+/**
+ * Adds a specified number of items to the cart by clicking the "Add to Cart" button.
+ * It clicks the first "Add to Cart" button found on the page, repeats this action `n` times.
+ *
+ * @param {number} n - The number of times to click the "Add to Cart" button.
+ */
+Cypress.Commands.add(
+  'addFirstItemsToCart',
+  (n) => {
+    cy.log(
+      `Adding items to cart with custom command "addFirstItemsToCart(${n})"`
+    );
+    for (let i = 0; i < n; i++) {
+      cy.get('[data-test^=add-to-cart]')
+        .first()
+        .click();
+    }
   }
 );
