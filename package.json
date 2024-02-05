@@ -4,12 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cypress": "cypress -help",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:view": "cypress run --headed --no-exit",
+    "cy:percy": "percy exec -- cypress run"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cypress": "^13.6.3"
+  },
+  "devDependencies": {
+    "@percy/cli": "^1.27.7",
+    "@percy/cypress": "^3.1.2"
   }
 }
