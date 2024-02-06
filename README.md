@@ -29,7 +29,7 @@ Here are some instructions to guide you through setting up the project on your l
 1. **Clone the project** (if you haven't already):
 
    ```
-   git@github.com:KittyGarrison/saucedemo_tests.git
+   git clone git@github.com:KittyGarrison/saucedemo_tests.git
    cd saucedemo_tests
    ```
 
